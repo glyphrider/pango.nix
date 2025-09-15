@@ -118,6 +118,7 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
   programs.hyprlock.enable = true;
+  programs.waybar.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -160,11 +161,11 @@
     vimAlias = true;
   };
 
-programs.fish = {
+  programs.fish = {
     enable = true;
   };
 
-programs.zsh = {
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestions.enable = true;
