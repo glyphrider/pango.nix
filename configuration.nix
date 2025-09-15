@@ -110,7 +110,11 @@
     ];
   };
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
   programs.hyprlock.enable = true;
 
   # Install firefox.
