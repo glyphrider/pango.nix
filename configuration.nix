@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
@@ -114,6 +114,8 @@
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
   programs.hyprlock.enable = true;
 
@@ -143,11 +145,23 @@
     dunst
     # needed for my zsh config
     oh-my-posh
+    # needed for fish
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
   ];
 
   programs.neovim = {
     #viAlias = true;
     vimAlias = true;
+  };
+
+programs.fish = {
+    enable = true;
   };
 
 programs.zsh = {
