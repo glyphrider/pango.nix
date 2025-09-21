@@ -4,7 +4,10 @@
 
 { config, pkgs, lib, inputs, ... }:
 
-{
+  let
+    hyprland-flake-pkgs = inputs.hyprland.packages.${pkgs.system};
+  in {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -53,9 +56,15 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet";
+        # command = "${hyprland-flake-pkgs.hyprland}/bin/Hyprland";
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
