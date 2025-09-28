@@ -55,6 +55,14 @@
 
     ".config/kitty/kitty.conf".source = ./files/kitty.conf;
 
+    ".config/nvim" = {
+      source = builtins.fetchTarball {
+        url = "https://github.com/glyphrider/kickstart.nvim/archive/refs/tags/v25.9.tar.gz";
+        sha256 = "1r6b0kp4xqdbq987mn3k5d87jqnl43qs41k9h198ly04dakbfa7w";
+      };
+      recursive = true;
+    };
+
     ".local/share/lutris/runners/wine/wine-10.9-staging-tkg-amd64" = {
       source = builtins.fetchTarball {
         url = "https://github.com/Kron4ek/Wine-Builds/releases/download/10.9/wine-10.9-staging-tkg-amd64.tar.xz";
@@ -63,13 +71,11 @@
       recursive = true;
     };
 
-    ".tmux/plugins/tpm" = {
-      source = pkgs.fetchFromGitHub {
-        owner = "tmux-plugins";
-        repo = "tpm";
-        rev = "v3.1.0";
-        sha256 = "CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
-      };
+    ".tmux/plugins/tpm".source = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "v3.1.0";
+      sha256 = "CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
     };
     ".tmux.conf".source = files/tmux.conf;
   };
