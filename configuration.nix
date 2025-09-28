@@ -225,7 +225,13 @@
     }
   ];
 
-  fonts.packages = [ pkgs.liberation_ttf ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    liberation_ttf
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
