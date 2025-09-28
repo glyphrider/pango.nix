@@ -173,6 +173,7 @@
     unzip
     wl-clipboard
     pavucontrol
+    htop
     # needed for hyprland
     kitty
     kdePackages.dolphin
