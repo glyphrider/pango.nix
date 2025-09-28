@@ -24,6 +24,10 @@
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  zramSwap = {
+    enable = true;
+  };
+
   networking.hostName = "pango"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -61,7 +65,6 @@
     settings = rec {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet";
-        # command = "${hyprland-flake-pkgs.hyprland}/bin/Hyprland";
       };
     };
   };
@@ -100,11 +103,27 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.brian = {
     isNormalUser = true;
     description = "Brian H. Ward";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       thunderbird
       lutris
@@ -116,6 +135,8 @@
       gh
       bitwarden
       tmux
+      virt-manager
+      virt-viewer
     ];
   };
 
@@ -148,6 +169,7 @@
     clang-tools
     unzip
     wl-clipboard
+    pavucontrol
     # needed for hyprland
     kitty
     kdePackages.dolphin
