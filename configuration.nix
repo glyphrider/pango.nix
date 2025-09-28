@@ -126,8 +126,6 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
       thunderbird
-      lutris
-      protonplus
       eza
       fzf
       zoxide

@@ -18,6 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.lutris
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -49,6 +50,28 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/hypr/hyprland.conf".source = ./files/hyprland.conf;
+    ".config/hypr/hyprlock.conf".source = ./files/hyprlock.conf;
+
+    ".config/kitty/kitty.conf".source = ./files/kitty.conf;
+
+    ".local/share/lutris/runners/wine/wine-10.9-staging-tkg-amd64" = {
+      source = builtins.fetchTarball {
+        url = "https://github.com/Kron4ek/Wine-Builds/releases/download/10.9/wine-10.9-staging-tkg-amd64.tar.xz";
+        sha256 = "10ad0vlh6178msdsjbkyr5iqhvwci7jivzwzx04qpndar1rym1ax";
+      };
+      recursive = true;
+    };
+
+    ".tmux/plugins/tpm" = {
+      source = pkgs.fetchFromGitHub {
+        owner = "tmux-plugins";
+        repo = "tpm";
+        rev = "v3.1.0";
+        sha256 = "CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
+      };
+    };
+    ".tmux.conf".source = files/tmux.conf;
   };
 
   # Home Manager can also manage your environment variables through
