@@ -61,8 +61,8 @@
 
     ".config/nvim" = {
       source = builtins.fetchTarball {
-        url = "https://github.com/glyphrider/kickstart.nvim/archive/refs/tags/v25.9.tar.gz";
-        sha256 = "1r6b0kp4xqdbq987mn3k5d87jqnl43qs41k9h198ly04dakbfa7w";
+        url = "https://github.com/glyphrider/kickstart.nvim/archive/eba4b58d1df83c7f0007b14ff2d72389ef916d5a.tar.gz";
+        sha256 = "01gpaybmf6vrqxbhxlvv5k6blr1hfgbcnfiy1a2knpn08dfgdpjx";
       };
       recursive = true;
     };
@@ -82,6 +82,21 @@
       sha256 = "CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
     };
     ".tmux.conf".source = files/tmux.conf;
+
+    "Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_classic_era_/Interface/AddOns/Questie" = {
+      source = builtins.fetchTarball {
+        url = "https://mediafilez.forgecdn.net/files/6683/245/Questie-v10.23.2.zip";
+        sha256 = "00wq5206gzjhzvzqnl9s4i4zgbcmcmr8niai3ly1njcm538gwqp5";
+      };
+      recursive = true;
+    };
+    "Games/battlenet/drive_c/Program Files (x86)/World of Warcraft/_classic_era_/Interface/AddOns" = {
+      source = builtins.fetchTarball {
+        url = "https://mediafilez.forgecdn.net/files/7001/78/Bagnon-11.2.9.zip";
+        sha256 = "192v41lsifriw17ng5z0gwramnvwj2lpjvkr1fj61s9dk84avh64";
+      };
+      recursive = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through
