@@ -50,6 +50,10 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/fish/conf.d/zoxide.fish".source = ./files/zoxide.fish;
+    ".config/fish/conf.d/ssh-agent.fish".source = ./files/ssh-agent.fish;
+
     ".config/hypr/hyprland.conf".source = ./files/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ./files/hyprlock.conf;
 
