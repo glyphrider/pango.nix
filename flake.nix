@@ -28,7 +28,7 @@
     nixosConfigurations = {
       pango = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [ ./configuration.nix ];
+        modules = [ ./pango.nix ];
       };
     };
     homeConfigurations = {
