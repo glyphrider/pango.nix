@@ -61,8 +61,8 @@
 
     ".config/nvim" = {
       source = builtins.fetchTarball {
-        url = "https://github.com/glyphrider/kickstart.nvim/archive/eba4b58d1df83c7f0007b14ff2d72389ef916d5a.tar.gz";
-        sha256 = "01gpaybmf6vrqxbhxlvv5k6blr1hfgbcnfiy1a2knpn08dfgdpjx";
+        url = "https://github.com/glyphrider/kickstart.nvim/archive/6b5e63bd46c4fed828684809cfa740215ac87cb5.tar.gz";
+        sha256 = "1r6b0kp4xqdbq987mn3k5d87jqnl43qs41k9h198ly04dakbfa7w";
       };
       recursive = true;
     };
