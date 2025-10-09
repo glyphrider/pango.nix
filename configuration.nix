@@ -98,8 +98,8 @@
 
   hardware.graphics = {
     enable32Bit = true;
-    extraPackages = with pkgs; [ amdvlk ];
-    extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+    # extraPackages = with pkgs; [ amdvlk ];
+    # extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
   virtualisation.libvirtd = {
@@ -108,13 +108,6 @@
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
     };
   };
 
