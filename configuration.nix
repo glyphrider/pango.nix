@@ -96,6 +96,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  hardware.enableRedistributableFirmware = true;
+
   hardware.graphics = {
     enable32Bit = true;
     # extraPackages = with pkgs; [ amdvlk ];
