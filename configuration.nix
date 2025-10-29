@@ -129,6 +129,7 @@
       tmux
       virt-manager
       virt-viewer
+      bemenu
     ];
   };
 
