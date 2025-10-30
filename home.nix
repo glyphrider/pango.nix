@@ -6,6 +6,8 @@
   home.username = "brian";
   home.homeDirectory = "/home/brian";
 
+  home.shell.enableFishIntegration = true;
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -31,6 +33,7 @@
     pkgs.tmux
     pkgs.virt-manager
     pkgs.virt-viewer
+    pkgs.ranger
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -63,6 +66,8 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".config/fish/config.fish".source = ./files/config.fish;
 
     ".config/fish/conf.d/zoxide.fish".source = ./files/zoxide.fish;
     ".config/fish/conf.d/ssh-agent.fish".source = ./files/ssh-agent.fish;
