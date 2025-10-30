@@ -38,7 +38,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "US/Eastern";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -143,34 +143,38 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    home-manager
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    git
+
+    inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.hyprpaper
+    inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.home-manager
+    
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pkgs.git
     # needed for neovim
-    neovim
-    ripgrep
-    clang
-    clang-tools
-    unzip
-    wl-clipboard
-    pavucontrol
-    htop
+    pkgs.neovim
+    pkgs.ripgrep
+    pkgs.clang
+    pkgs.clang-tools
+    pkgs.unzip
+    pkgs.wl-clipboard
+    pkgs.pavucontrol
+    pkgs.htop
     # needed for hyprland
-    kitty
-    kdePackages.dolphin
-    wofi
-    dunst
+    pkgs.kitty
+    pkgs.kdePackages.dolphin
+    pkgs.wofi
+    pkgs.dunst
     # needed for my zsh config
-    oh-my-posh
+    pkgs.oh-my-posh
     # needed for fish
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
-    fzf
-    fishPlugins.grc
-    grc
+    pkgs.fishPlugins.done
+    pkgs.fishPlugins.fzf-fish
+    pkgs.fishPlugins.forgit
+    pkgs.fishPlugins.hydro
+    pkgs.fzf
+    pkgs.fishPlugins.grc
+    pkgs.grc
   ];
 
   programs.neovim = {
@@ -211,7 +215,7 @@
   fonts.packages = with pkgs; [
     liberation_ttf
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
  

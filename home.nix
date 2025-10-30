@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -29,7 +29,7 @@
     pkgs.zoxide
     pkgs.stow
     pkgs.gh
-    pkgs.bitwarden
+    pkgs.bitwarden-desktop
     pkgs.tmux
     pkgs.virt-manager
     pkgs.virt-viewer
@@ -40,7 +40,7 @@
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
+    # # overrides. You can do that dire${ctly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
@@ -74,7 +74,6 @@
 
     ".config/hypr/hyprland.conf".source = ./files/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ./files/hyprlock.conf;
-    ".config/hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
 
     ".config/kitty/kitty.conf".source = ./files/kitty.conf;
 
@@ -117,12 +116,45 @@
       recursive = true;
     };
     ".local/share/wallpaper/wall0.png".source = builtins.fetchurl {
-      url = "https://github.com/hyprwm/Hyprland/blob/6ade4d58cab67e18aa758ef664e36421cab4d8b2/assets/install/wall0.png";
-      sha256 = "00bcsyddmfr4f9z41nhqlfvfkcbap6q0kqhqngz2z6zsckj3naij";
+      url = "https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/install/wall0.png";
+      sha256 = "0ph3j09sabqgc1rxpvzixsqfciwlxclpx0ddny6r7dcnzb71aphc";
     };
     ".local/share/wallpaper/wall2.png".source = builtins.fetchurl {
-      url = "https://github.com/hyprwm/Hyprland/blob/6ade4d58cab67e18aa758ef664e36421cab4d8b2/assets/install/wall2.png";
-      sha256 = "1dck37y4krlqrgl5kzb9nhd234skn5b5c7p9sv036afqljbliafr";
+      url = "https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/install/wall2.png";
+      sha256 = "0bhkz20hh2ypq84nmggzqvxzbpbimcdyqjl1ivyp26wykgnizfwp";
+    };
+  };
+
+  services = {
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
+        preload  = [
+          "~/.local/share/wallpaper/wall0.png"
+          "~/.local/share/wallpaper/wall2.png"
+        ];
+        wallpaper = [
+          ",~/.local/share/wallpaper/wall0.png"
+        ];
+      };
+    };
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "hyprlock";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = 900;
+            on-timeout = "hyprlock";
+          }
+        ];
+      };
     };
   };
 
