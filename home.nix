@@ -20,6 +20,18 @@
   home.packages = [
     pkgs.lutris
     pkgs.btop
+    pkgs.wmenu
+    pkgs.thunderbird
+    pkgs.eza
+    pkgs.fzf
+    pkgs.zoxide
+    pkgs.stow
+    pkgs.gh
+    pkgs.bitwarden
+    pkgs.tmux
+    pkgs.virt-manager
+    pkgs.virt-viewer
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

@@ -119,17 +119,6 @@
     description = "Brian H. Ward";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
-      thunderbird
-      eza
-      fzf
-      zoxide
-      stow
-      gh
-      bitwarden
-      tmux
-      virt-manager
-      virt-viewer
-      bemenu
     ];
   };
 
