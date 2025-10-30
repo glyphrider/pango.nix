@@ -74,6 +74,7 @@
 
     ".config/hypr/hyprland.conf".source = ./files/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ./files/hyprlock.conf;
+    ".config/hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
 
     ".config/kitty/kitty.conf".source = ./files/kitty.conf;
 
@@ -114,6 +115,14 @@
         sha256 = "192v41lsifriw17ng5z0gwramnvwj2lpjvkr1fj61s9dk84avh64";
       };
       recursive = true;
+    };
+    ".local/share/wallpaper/wall0.png".source = builtins.fetchurl {
+      url = "https://github.com/hyprwm/Hyprland/blob/6ade4d58cab67e18aa758ef664e36421cab4d8b2/assets/install/wall0.png";
+      sha256 = "00bcsyddmfr4f9z41nhqlfvfkcbap6q0kqhqngz2z6zsckj3naij";
+    };
+    ".local/share/wallpaper/wall2.png".source = builtins.fetchurl {
+      url = "https://github.com/hyprwm/Hyprland/blob/6ade4d58cab67e18aa758ef664e36421cab4d8b2/assets/install/wall2.png";
+      sha256 = "1dck37y4krlqrgl5kzb9nhd234skn5b5c7p9sv036afqljbliafr";
     };
   };
 
