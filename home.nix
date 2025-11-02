@@ -20,6 +20,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.brave
+    pkgs.google-chrome
     pkgs.lutris
     pkgs.btop
     pkgs.wmenu
