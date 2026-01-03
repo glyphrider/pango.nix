@@ -63,7 +63,7 @@
     enable = true;
     settings = rec {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet";
+        command = "${pkgs.tuigreet}/bin/tuigreet -c start-hyprland";
       };
     };
   };
@@ -175,6 +175,9 @@
     pkgs.fzf
     pkgs.fishPlugins.grc
     pkgs.grc
+    # rust
+    rustc
+    cargo
   ];
 
   programs.neovim = {
