@@ -178,6 +178,8 @@
     # rust
     rustc
     cargo
+    # llvm
+    llvmPackages_latest.llvm
   ];
 
   programs.neovim = {
