@@ -87,6 +87,14 @@
       recursive = true;
     };
 
+    ".local/share/Steam/compatibilitytools.d/GE-Proton10-28" = {
+      source = builtins.fetchTarball {
+        url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-28/GE-Proton10-28.tar.gz";
+        sha256 = "1skcwd81v89wp4fdxlx08zgnd8k83bawyfk5x5d9kqrqgwcx5nz8";
+      };
+      recursive = true;
+    };
+
     ".local/share/lutris/runners/wine/wine-10.9-staging-tkg-amd64" = {
       source = builtins.fetchTarball {
         url = "https://github.com/Kron4ek/Wine-Builds/releases/download/10.9/wine-10.9-staging-tkg-amd64.tar.xz";
